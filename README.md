@@ -1,71 +1,111 @@
-# MASTERMIND GAME - COMPLETE DOCUMENTATION
+### Mastermind Game Implementation - README
 
-=== GAME OVERVIEW ===
-* Code-breaking game where players guess a 4-digit secret code
-* Digits range from 0-8 with no duplicates
-* Default: 10 attempts (configurable)
-* Provides feedback after each guess
+#### Overview
+This C# implementation of the classic Mastermind game challenges players to guess a 4-digit secret code within a limited number of attempts. The code uses digits 0-8 with no duplicates.
 
-=== HOW TO PLAY ===
-1. Launch the game (see "Running the Game" section)
-2. Enter your 4-digit guess when prompted:
-   - Must contain unique digits (0-8)
-   - Example valid guess: 1234
-   - Example invalid guess: 1123 (duplicate 1s)
-3. Receive feedback:
-   - ✔ Well-placed pieces: Correct digit in correct position
-   - ↻ Misplaced pieces: Correct digit in wrong position
-4. Continue guessing until:
-   - You guess the code (win)
-   - Run out of attempts (lose)
-   - Exit with Ctrl+Z
+#### Features
+- Random code generation
+- Detailed feedback system (correct positions + misplaced digits)
+- Command-line customization
+- Comprehensive input validation
+- Attempt tracking
+- Reveal secret code on game end
 
-=== COMMAND LINE OPTIONS ===
-| Option | Description                  | Example Usage        |
-|--------|------------------------------|----------------------|
-| -c     | Set custom secret code       | -c 1357              |
-| -t     | Set maximum attempts        | -t 15                |
+---
 
-=== RUNNING THE GAME ===
-1. BASIC USAGE (random code, 10 attempts):
-   > dotnet run
+### How to Run the Game
 
-2. CUSTOM CODE (5 attempts):
-   > dotnet run -- -c 2468 -t 5
+#### Prerequisites
+- .NET SDK (6.0 or newer)
 
-3. EXTENDED ATTEMPTS (20 attempts):
-   > dotnet run -- -t 20
+#### Execution Steps:
+1. Open a terminal and navigate to the directory containing the file.
 
-=== GAME FEATURES ===
-• Input validation ensures proper guesses
-• Clear feedback after each attempt
-• Configurable difficulty (via attempts)
-• Option to set specific codes for testing
-• Clean exit with Ctrl+Z
+2. Compile and run:
+```bash
+# Windows
+dotnet run 
+```
 
-=== TIPS & STRATEGY ===
-1. Start with a broad initial guess (e.g., 0123)
-2. Use feedback to eliminate possibilities:
-   - Well-placed digits stay in position
-   - Misplaced digits need new positions
-   - Unmentioned digits can be discarded
-3. Track which digits you've tried
-4. Remember all digits are unique
+#### Command Line Options:
+| Option | Description | Example |
+|--------|-------------|---------|
+| `-c` | Set custom secret code | `dotnet run -- -c 1234` |
+| `-t` | Set max attempts | `dotnet run -- -t 15` |
+| both | Set max attempts and Set custom secret code | `dotnet run -- -c 1234 -t 15` |
+| (none) | Use random code (10 attempts) | `dotnet run` |
 
-=== TROUBLESHOOTING ===
-• "Invalid input" error:
-  - Ensure exactly 4 digits
-  - No duplicates
-  - All digits 0-8
+---
 
-• "Invalid secret code" error:
-  - Only occurs when using -c option
-  - Verify code meets same requirements as guesses
+### How to Play
+1. **Objective**: Guess the 4-digit secret code
+2. **Rules**:
+   - Digits 0-8 only
+   - No duplicate digits
+   - Limited attempts (default: 10)
+3. **Feedback**:
+   - **Well-placed pieces**: Correct digit in correct position
+   -  **Misplaced pieces**: Correct digit in wrong position
+4. **Win Condition**: Guess all 4 digits in correct positions
 
-• Game not running:
-  - Verify .NET SDK is installed
-  - Ensure you're in correct directory
+#### Game Controls:
+- Enter guesses at the prompt
+- Press `Ctrl+Z` (Windows) + Enter to exit
 
-=== VERSION INFO ===
-Mastermind v1.0
-C# .NET implementation
+---
+
+### Implementation Details
+
+#### Class Structure
+| Class | Responsibility |
+|-------|---------------|
+| `Program` | Entry point, CLI argument handling |
+| `MastermindGame` | Core game loop and flow control |
+| `GameSettings` | Attempt tracking and game state |
+| `Code` | Code generation, validation, and feedback |
+
+ 
+
+---
+
+### Example Gameplay
+```
+dotnet run -- -c 1234 -t 15
+
+Ctrl + Z then enter to exit the game
+Can you break the code? Enter a valid guess. Must be 4 digits from 0-8:
+
+Round 0
+1253
+Well-placed pieces: 2
+Misplaced pieces: 1
+
+Round 1
+1354
+Well-placed pieces: 2
+Misplaced pieces: 1
+
+Round 2
+1234
+Congratz! You did it!
+```
+
+---
+
+### Exit Conditions
+1. Successful code guess
+2. Exhausted all attempts
+3. User exit via `Ctrl+Z`
+4. Invalid command-line arguments
+
+
+---
+
+### Design Principles
+1. **Separation of Concerns**: Discrete classes for game logic, settings, and code handling
+2. **Input Validation**: Robust checks at all entry points
+3. **Immutable State**: Secret code remains unchanged after generation
+4. **Feedback Clarity**: Precise position/misplacement reporting
+5. **Customizability**: Flexible via command-line parameters
+
+This implementation balances game authenticity with user-friendly features while maintaining clean, maintainable code structure.
