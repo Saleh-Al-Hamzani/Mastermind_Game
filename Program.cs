@@ -70,7 +70,7 @@ public class MastermindGame
         while (!gameSettings.IsGameOver())
         {
             
-            Console.WriteLine("Round " + gameSettings.GetNumberOfAttempts());
+            Console.WriteLine("\nRound " + gameSettings.GetNumberOfAttempts());
             string guess = Console.ReadLine();
             if (guess == null)
             {

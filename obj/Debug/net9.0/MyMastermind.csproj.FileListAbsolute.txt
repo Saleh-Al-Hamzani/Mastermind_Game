@@ -26,3 +26,4 @@ C:\Users\saleh\Documents\GitHub\Mastermind_Game\obj\Debug\net9.0\refint\MyMaster
 C:\Users\saleh\Documents\GitHub\Mastermind_Game\obj\Debug\net9.0\MyMastermind.pdb
 C:\Users\saleh\Documents\GitHub\Mastermind_Game\obj\Debug\net9.0\MyMastermind.genruntimeconfig.cache
 C:\Users\saleh\Documents\GitHub\Mastermind_Game\obj\Debug\net9.0\ref\MyMastermind.dll
+C:\Users\saleh\Documents\GitHub\Mastermind_Game\obj\Debug\net9.0\MyMastermind.sourcelink.json
